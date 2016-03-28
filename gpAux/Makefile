@@ -778,14 +778,14 @@ else
 	    echo "ERROR: BLD_PACKAGING_PID must have a value for Windows packaging operations; check your Makefile"; \
 	    exit 1; \
 	fi
-	ssh build@harpy 'if [ -d $(BLD_PACKAGING_PID) ]; then rm -rf $(BLD_PACKAGING_PID); fi'
-	ssh build@harpy 'mkdir -p $(BLD_PACKAGING_PID)/packaging/src/windows'
-	scp -r client/install/src/windows/* build@harpy:$(BLD_PACKAGING_PID)/packaging/src/windows/
-	scp -r $(CONNECTIVITYINSTLOC) build@harpy:$(BLD_PACKAGING_PID)/packaging/
-	ssh build@harpy 'cd $(BLD_PACKAGING_PID)/packaging/src/windows/ && make PACKAGE=greenplum-$@ VERSION=$(VERSION) SRCDIR=../../$(notdir $(CONNECTIVITYINSTLOC))'
-	scp build@harpy:$(BLD_PACKAGING_PID)/packaging/greenplum-$@-$(VERSION)-WinXP-x86_32.msi .
+	ssh  -v build@harpy 'if [ -d $(BLD_PACKAGING_PID) ]; then rm -rf $(BLD_PACKAGING_PID); fi'
+	ssh  -v build@harpy 'mkdir -p $(BLD_PACKAGING_PID)/packaging/src/windows'
+	scp -r -v client/install/src/windows/* build@harpy:$(BLD_PACKAGING_PID)/packaging/src/windows/
+	scp -r -v $(CONNECTIVITYINSTLOC) build@harpy:$(BLD_PACKAGING_PID)/packaging/
+	ssh -v build@harpy 'cd $(BLD_PACKAGING_PID)/packaging/src/windows/ && make PACKAGE=greenplum-$@ VERSION=$(VERSION) SRCDIR=../../$(notdir $(CONNECTIVITYINSTLOC))'
+	scp -v build@harpy:$(BLD_PACKAGING_PID)/packaging/greenplum-$@-$(VERSION)-WinXP-x86_32.msi .
 	chmod 755 greenplum-$@-$(VERSION)-WinXP-x86_32.msi
-	ssh build@harpy 'rm -rf $(BLD_PACKAGING_PID)'
+	ssh -v build@harpy 'rm -rf $(BLD_PACKAGING_PID)'
 endif
 endif
 
@@ -830,14 +830,14 @@ else
 	    echo "ERROR: BLD_PACKAGING_PID must have a value for Windows packaging operations; check your Makefile"; \
 	    exit 1; \
 	fi
-	ssh build@harpy 'if [ -d $(BLD_PACKAGING_PID) ]; then rm -rf $(BLD_PACKAGING_PID); fi'
-	ssh build@harpy 'mkdir -p $(BLD_PACKAGING_PID)/packaging/src/windows'
-	scp -r client/install/src/windows/* build@harpy:$(BLD_PACKAGING_PID)/packaging/src/windows/
-	scp -r $(CLIENTINSTLOC) build@harpy:$(BLD_PACKAGING_PID)/packaging/
-	ssh build@harpy 'cd $(BLD_PACKAGING_PID)/packaging/src/windows/ && make PACKAGE=greenplum-$@ VERSION=$(VERSION) SRCDIR=../../$(notdir $(CLIENTINSTLOC))'
-	scp build@harpy:$(BLD_PACKAGING_PID)/packaging/greenplum-$@-$(VERSION)-WinXP-x86_32.msi .
+	ssh -v build@harpy 'if [ -d $(BLD_PACKAGING_PID) ]; then rm -rf $(BLD_PACKAGING_PID); fi'
+	ssh -v build@harpy 'mkdir -p $(BLD_PACKAGING_PID)/packaging/src/windows'
+	scp -v -r client/install/src/windows/* build@harpy:$(BLD_PACKAGING_PID)/packaging/src/windows/
+	scp -v -r $(CLIENTINSTLOC) build@harpy:$(BLD_PACKAGING_PID)/packaging/
+	ssh -v   build@harpy 'cd $(BLD_PACKAGING_PID)/packaging/src/windows/ && make PACKAGE=greenplum-$@ VERSION=$(VERSION) SRCDIR=../../$(notdir $(CLIENTINSTLOC))'
+	scp -v build@harpy:$(BLD_PACKAGING_PID)/packaging/greenplum-$@-$(VERSION)-WinXP-x86_32.msi .
 	chmod 755 greenplum-$@-$(VERSION)-WinXP-x86_32.msi
-	ssh build@harpy 'rm -rf $(BLD_PACKAGING_PID)'
+	ssh -v build@harpy 'rm -rf $(BLD_PACKAGING_PID)'
 endif
 endif
 
@@ -901,14 +901,14 @@ else
 	    echo "ERROR: BLD_PACKAGING_PID must have a value for Windows packaging operations; check your Makefile"; \
 	    exit 1; \
 	fi
-	ssh build@harpy 'if [ -d $(BLD_PACKAGING_PID) ]; then rm -rf $(BLD_PACKAGING_PID); fi'
-	ssh build@harpy 'mkdir -p $(BLD_PACKAGING_PID)/packaging/src/windows'
-	scp -r client/install/src/windows/* build@harpy:$(BLD_PACKAGING_PID)/packaging/src/windows/
-	scp -r $(LOADERSINSTLOC) build@harpy:$(BLD_PACKAGING_PID)/packaging/
-	ssh build@harpy 'cd $(BLD_PACKAGING_PID)/packaging/src/windows/ && make PACKAGE=greenplum-$@ VERSION=$(VERSION) SRCDIR=../../$(notdir $(LOADERSINSTLOC))'
-	scp build@harpy:$(BLD_PACKAGING_PID)/packaging/greenplum-$@-$(VERSION)-WinXP-x86_32.msi .
+	ssh -v build@harpy 'if [ -d $(BLD_PACKAGING_PID) ]; then rm -rf $(BLD_PACKAGING_PID); fi'
+	ssh -v build@harpy 'mkdir -p $(BLD_PACKAGING_PID)/packaging/src/windows'
+	scp -r -v client/install/src/windows/* build@harpy:$(BLD_PACKAGING_PID)/packaging/src/windows/
+	scp -r -v $(LOADERSINSTLOC) build@harpy:$(BLD_PACKAGING_PID)/packaging/
+	ssh -v build@harpy 'cd $(BLD_PACKAGING_PID)/packaging/src/windows/ && make PACKAGE=greenplum-$@ VERSION=$(VERSION) SRCDIR=../../$(notdir $(LOADERSINSTLOC))'
+	scp -v build@harpy:$(BLD_PACKAGING_PID)/packaging/greenplum-$@-$(VERSION)-WinXP-x86_32.msi .
 	chmod 755 greenplum-$@-$(VERSION)-WinXP-x86_32.msi
-	ssh build@harpy 'rm -rf $(BLD_PACKAGING_PID)'
+	ssh -v build@harpy 'rm -rf $(BLD_PACKAGING_PID)'
 endif
 endif
 
